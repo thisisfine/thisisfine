@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>This is fine.</title>
     <style type="text/css">
         * {
@@ -10,28 +12,19 @@
         html, body {
             height: 100%;
             width: 100%;
-            background-color: #000;
+            overflow: hidden;
+            background-color: #c7d991;
         }
-        #fine-video {
+        #fine {
             position: fixed;
-            right: 0;
-            bottom: 0;
-
-            min-width: 100%;
-            min-height: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-
-            top: 50%;
-            left: 50%;
-
-            -webkit-transform: translate(-50%,-50%);
-            -moz-transform: translate(-50%,-50%);
-            -ms-transform: translate(-50%,-50%);
-            transform: translate(-50%,-50%);
-
-            background-size: cover;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+            -webkit-user-select: none;
+            user-select: none;
         }
         @-webkit-keyframes hue {
             50% {
@@ -195,17 +188,65 @@
                 transform: translate(-50%, -50%) scale(1.1) rotate(0);
             }
         }
-        #fine-video:active {
+        #fine.panic {
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
             transform-origin: center center;
-            animation-play-state: running;
-            animation: shake-rotate 4.1s ease-in-out infinite, hue 2.666s ease-in-out infinite; 
+            animation: shake-rotate 4.1s ease-in-out infinite, hue 2.666s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
-  <video id="fine-video" preload="auto" autoplay loop muted>
-    <source src="thisisfine.mp4" type="video/mp4" >
-  </video>
+  <svg id="fine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice"
+       role="img" aria-label="A dog in a hat sits at a table with a coffee mug while the room burns. This is fine.">
+    <defs>
+      <clipPath id="doorway"><path d="M560 275L801 254V800H560Z"/></clipPath>
+      <path id="tabletop" d="M1196 657L1772 657C1796 657 1808 672 1806 690L1802 742C1800 762 1786 776 1764 776
+                             L1222 760C1166 758 1131 740 1131 712C1131 682 1160 659 1196 657Z"/>
+    </defs>
+
+    <rect x="-6000" y="-6000" width="14000" height="14000" fill="#c7d991"/>
+
+    <path d="M553 268L805 246H848V800H553Z" fill="#1d1203"/>
+    <path d="M560 275L801 254V800H560Z" fill="#7d8557"/>
+    <g id="door-fire" clip-path="url(#doorway)"></g>
+
+    <g stroke="#1d1203" stroke-linejoin="round">
+      <path d="M1460 130H1632C1636.4 130 1640 133.6 1640 138V434C1640 438.4 1636.4 442 1632 442H1460
+               C1455.6 442 1452 438.4 1452 434V138C1452 133.6 1455.6 130 1460 130Z" fill="#686a5b" stroke-width="7"/>
+      <path d="M1484 160H1607V408H1484Z" fill="#8a9886" stroke-width="5"/>
+      <path d="M1544 243L1512 311M1574 243L1521 369M1574 308L1546 376M1586 329L1563 371M1590 351L1573 380"
+            fill="none" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <path d="M-6000 752L640 752L1000 858H8000V8000H-6000Z" fill="#ae8764"/>
+    <path d="M608 790H665M614 801L692 800M615 815L697 814M675 847H752M692 861H752M823 916L846 916
+             M820 931H846M1034 940L1125 939M1024 960L1117 956M1035 985L1131 982M802 1010H883M981 1011L1091 1006
+             M820 1025L886 1022M990 1026L1071 1019M1024 1040L1083 1032"
+          fill="none" stroke="#1d1203" stroke-width="4" stroke-linecap="round"/>
+
+    <g id="back-fire"></g>
+
+    <g id="chair"></g>
+    <g id="dog"></g>
+
+    <g stroke="#1d1203" stroke-width="6" stroke-linejoin="round">
+      <path d="M1200 770H1245V1040H1200ZM1385 790H1420V960H1385Z" fill="#c67b3c"/>
+      <path d="M1200 790H1245V818H1200ZM1385 812H1420V842H1385Z" fill="#1d1203" stroke="none"/>
+      <use href="#tabletop" y="40" fill="#c67b3c"/>
+      <use href="#tabletop" fill="#c89660"/>
+    </g>
+    <g id="mug"></g>
+
+    <g id="front-fire"></g>
+    <g id="smoke"></g>
+  </svg>
+  <script src="art/fire.js"></script>
+  <script src="art/dog.js"></script>
+  <script src="art/still.js"></script>
+  <script src="fine.js"></script>
   <!-- SEIZURES EXIST. You have now been officially warned. You are welcome. -->
 </body>
 </html><!-- This html is fine. -->
